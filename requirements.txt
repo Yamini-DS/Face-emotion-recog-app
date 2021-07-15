@@ -1,27 +1,16 @@
 fastai
 seaborn==0.11.1
 opencv-python-headless==4.5.1.48
-#numpy==1.20.2
+
 numpy==1.19.2
 Pillow==8.2.0
 matplotlib==3.3.4
 pandas==1.2.5
 tensorflow-cpu
-#tensorflow-gpu==2.5
-#scipy==1.7.0
+
 
 streamlit==0.84.1
-#streamlit-webrtc==0.23.11
-
-#urllib3==1.26.4
-
-#webencodings==0.5.1
-#Werkzeug==1.0.1
 
 aiortc==1.2.0
 av==8.0.3
 streamlit-webrtc==0.11.0
-#pytz==2021.1
-#PyYAML==5.4.1
-#Jinja2==2.11.3
-
