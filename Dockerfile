@@ -9,9 +9,7 @@ WORKDIR /streamlit_app
 ADD . /streamlit_app
 
 RUN pip install --upgrade pip
-RUN apt-get install 'ffmpeg'\
-'libsm6'\
-'libxext6' -y
+
 
 RUN apt-get update
 RUN apt-get install ffmpeg libsm6 libxext6  -y
