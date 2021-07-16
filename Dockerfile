@@ -9,7 +9,6 @@ WORKDIR /streamlit_app
 ADD . /streamlit_app
 
 RUN pip install --upgrade pip
-RUN apt-get install libgl1-mesa-glx -y
 RUN apt-get install 'ffmpeg'\
 'libsm6'\
 'libxext6' -y
@@ -17,6 +16,7 @@ RUN apt-get install 'ffmpeg'\
 RUN apt-get update
 RUN apt-get install ffmpeg libsm6 libxext6  -y
 RUN  apt-get install -y libgl1-mesa-dev
+RUN apt-get install libgl1-mesa-glx -y
 RUN xargs -a packages.txt apt-get install --yes
 
 # Install dependencies
