@@ -112,7 +112,7 @@ smmap==4.0.0
 
 tensorboard==2.4.0
 tensorboard-data-server==0.6.1
-tensorboard-plugin-wit==1.6.0
+tensorboard-plugin-wit==1.6.0.post2
 tensorflow-estimator==2.5.0
 termcolor==1.1.0
 terminado==0.9.4
