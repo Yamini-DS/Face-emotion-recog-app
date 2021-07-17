@@ -3,18 +3,15 @@ import cv2
 import numpy as np
 import streamlit as st
 from PIL import Image
-from click import style
 from fastai import *
 from fastai.vision import *
 import io
 import streamlit.components.v1 as components
-#from streamlit_webrtc import VideoTransformerBase, webrtc_streamer
 from streamlit_webrtc import ClientSettings, VideoTransformerBase, WebRtcMode, webrtc_streamer
-from keras.preprocessing.image import img_to_array
 import av
 from typing import Union
 import classify
-import logging
+#import logging
 import logging.handlers
 import threading
 from pathlib import Path
@@ -39,7 +36,22 @@ st.title('Welcome to Face Emotion Recognition Application')
 main_options = st.selectbox("What would like to choose: ", ['About', 'Detection space', 'Contact'])
 
 if main_options == 'About':
-    st.write('This is the solution to real time face detection problem')
+    st.write('This is the solution to real time face emotion detection problem')
+    st.write('Today, the majority of our time is spent on interacting with computers and mobile phones in our daily life due to \
+    technology progression and ubiquitously spreading these mediums. However, they play an essential role in our \
+    lives, and the vast number of existing software interfaces are non-verbal, primitive and terse. Adding emotional\
+     expression recognition to expect the users’ feelings and emotional state can drastically improve human–computer interaction ')
+    st.write('Humans usually employ different cues to express their emotions, such as facial expressions, hand \
+    gestures and voice. Facial expressions represent up to 55% of human communications while other ways such as \
+    oral language are allocated a mere 7% of emotion expression. Therefore, considering facial expressions in an \
+    HRI(Human robotic interactions system enables simulation of natural interactions successfully')
+    st.write('This has many more advantages than we can imagine')
+    st.write('This can be used in education, research, medicine, manufacturing, investigation and many more')
+    st.markdown('### How good it is that the people are able to catch the things or understand properly, Same with real time detection')
+    st.write('This when used in right way gives many good results')
+    st.write('Note: This was created with the objective of using in field of education which detect the emotions\
+     of the students which enables in proper understanding and teaching the students the right way to do the things.\
+     Works even like surveillance camera which keeps the eye on students emotions')
 
 elif main_options == 'Contact':
     st.write('''
@@ -242,7 +254,6 @@ elif main_options == 'Detection space':
 
 
         test_video_pred('None')
-
 
     elif option == 'OpenCV Live':
 
@@ -502,3 +513,4 @@ elif main_options == 'Detection space':
 st.write('Thank you. I hope you got emotions detected which are hidden in the picture or an image or a video')
 st.write('See you soon')
 st.write('This is created by Yamini')
+st.write('Copyright © 2021 | Yamini Peddireddi')
