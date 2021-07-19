@@ -7,10 +7,10 @@ from fastai.vision import *
 import cv2
 
 
+
 @st.cache(allow_output_mutation=True)
 def get_model():
-    model = load_learner(path=r"D:\Data science\Alma better\DL Facial emotion recognition\Images\images\train",
-                         file='fastai_emojis_model4.pkl')
+    model = load_learner(path='.', file='fastai_emojis_model4.pkl')
     print('Model Loaded')
     return model
 
