@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, jsonify, request
 import livevideo_emodetection
 
 app = Flask(__name__)
@@ -9,12 +9,12 @@ def home():
     return "Welcome to detection space"
 
 
-@app.route('detect')
+@app.route('/detect')
 def detect():
     return "Detection begins"
 
 
-#app.add_url_rule('/',  livevideo_emodetection)
+app.add_url_rule('/',  livevideo_emodetection)
 
 # def space1():
 #   return "Detected the emotion of the person"

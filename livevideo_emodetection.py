@@ -1,15 +1,17 @@
 from fastai import *
 from fastai.vision import *
-#from fastai.vision import image
+# from fastai.vision import image
 import os
-#import pandas as pd
+# import pandas as pd
 import numpy as np
 import cv2
 
-model4_test=load_learner(path=r"D:\Data science\Alma better\DL Facial emotion recognition\Images\images\train",file='fastai_emojis_model4.pkl')
+model4_test = load_learner(path=r"D:\Data science\Alma better\DL Facial emotion recognition\Images\images\train",
+                           file='fastai_emojis_model4.pkl')
 os.chdir(r'D:\Data science\Alma better\DL Facial emotion recognition\Images\images\Input and output')
 
-#This is the text added to the prediction
+
+# This is the text added to the prediction
 def prediction(img1):
     predictions = []
     predictions = model4_test.predict(img1)
@@ -38,7 +40,8 @@ def prediction(img1):
         print("Cannot detect")
     # cv2.destroyWindow("preview")
 
-#the function used to get the predictions from the model
+
+# the function used to get the predictions from the model
 def return_prediction(path):
     # converting image to gray scale and save it
     img = cv2.imread(path)
@@ -70,7 +73,8 @@ def return_prediction(path):
     plt.imshow(img)  # uncomment if image has to be displayed
     return str(model_pred1)
 
-#test to run until we stop or video ends
+
+# test to run until we stop or video ends
 def test_rerun(text, cap):
     while (True):
         ret, img = cap.read()
@@ -100,9 +104,11 @@ def test_rerun(text, cap):
             cv2.destroyAllWindows()
             break
 
-#Video detection begins with the below code or function
+
+# Video detection begins with the below code or function
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 cap = cv2.VideoCapture('./pexels-tiger-lily-7149007.mp4')
+
 
 def test_video_pred(text, cap):
     while (True):
@@ -137,6 +143,7 @@ def test_video_pred(text, cap):
             cv2.destroyAllWindows()
             break
 
-#cap=cv2.VideoCapture(0)
 
-#test_video_pred('None',cap)
+# cap=cv2.VideoCapture(0)
+
+test_video_pred('None', cap)
