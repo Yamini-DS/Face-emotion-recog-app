@@ -50,6 +50,6 @@ streamlit run streamlit_app.py
 - To video to come up it may take few minutes if it doesn't come within 5 minutes(max) and any error pops up there may be some internal mistake.
 - If it doesn't show you can please refer to the below demo link of the application
 - Demo link:  https://youtu.be/JDKs6hsiCjo
--
+
 
 
