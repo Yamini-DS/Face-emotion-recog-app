@@ -428,9 +428,9 @@ elif main_options == 'Detection space':
             return b
 
 
-        class VideoTransformer(VideoTransformerBase):
+        #class VideoTransformer(VideoTransformerBase):
 
-            pass
+         #   pass
 
 
         def face_detect():
@@ -446,7 +446,6 @@ elif main_options == 'Detection space':
 
                 def transform(self, frame: av.VideoFrame) -> np.ndarray:
                     in_image = frame.to_ndarray(format="bgr24")
-
                     out_image = in_image[:, ::-1, :]  # Simple flipping for example.
 
                     with self.frame_lock:
@@ -487,6 +486,8 @@ elif main_options == 'Detection space':
                             label_position = (x, y)
                             b = cv2.putText(a, label, label_position, cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)  # Text Adding
                             st.image(b, channels="BGR")
+                        else:
+                            st.write('Unable to access camera input')
 
 
         HERE = Path(__file__).parent
