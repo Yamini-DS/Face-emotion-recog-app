@@ -141,6 +141,7 @@ elif main_options == 'Detection space':
         scaling_factory = 0.25
         image_placeholder = st.empty()
 
+
         # test to run until we stop or video ends
 
         def test_rerun(text, video_stream):
@@ -401,18 +402,19 @@ elif main_options == 'Detection space':
         #     return text
         #
 
-        #test_video_pred('None')
+        # test_video_pred('None')
         st.write('This is not a good option for streamlit then it works well locally')
         st.write('OpenCV is popular python library used when images and videos are involved')
         st.write('OpenCV is a good option for computer vision problems')
-        st.markdown('### For real time detection in streamlit please use a Live Video detection option/an Instant Snapshot detection for finding out the emotion of a person in live')
-        st.write("Streamlit doesn't support OpenCV for live detection for some reasons and webrtc solves this problem in streamlit. Hence choose the other options for detection")
+        st.markdown(
+            '### For real time detection in streamlit please use a Live Video detection option/an Instant Snapshot detection for finding out the emotion of a person in live')
+        st.write(
+            "Streamlit doesn't support OpenCV for live detection for some reasons and webrtc solves this problem in streamlit. Hence choose the other options for detection")
         st.write('Thanks for reading')
         st.write('Thank you')
 
     elif option == 'an Instant Snapshot live detection':
-        #class VideoTransformer(VideoTransformerBase):
-        def transform(frame):
+        def transform(self, frame):
             label = []
             img = frame.to_ndarray(format="bgr24")
             face_cascade_detect = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
@@ -427,11 +429,6 @@ elif main_options == 'Detection space':
                 t = pil2tensor(roi_gray, dtype=np.float32)  # converts to numpy tensor
                 t = t.float() / 255.0
                 roi = Image(t)
-
-                # roi = roi_gray.astype('float') / 255.0
-                # roi = img_to_array(roi)
-                # roi = Image(roi)
-                # roi = np.expand_dims(roi, axis=0)  ## reshaping the cropped face image for prediction
                 model6 = classify.get_model()
                 prediction = model6.predict(roi)[0]  # Prediction
                 label = str(prediction)
@@ -439,8 +436,8 @@ elif main_options == 'Detection space':
                 b = cv2.putText(a, label, label_position, cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
             return b
 
-        class VideoTransformer(VideoTransformerBase):
-            pass
+        # class VideoTransformer(VideoTransformerBase):
+        #   pass
 
         def face_detect():
             class VideoTransformer(VideoTransformerBase):
@@ -463,8 +460,7 @@ elif main_options == 'Detection space':
 
                     return in_image
 
-            ctx = webrtc_streamer(key="snapshot", mode=WebRtcMode.SENDRECV, video_transformer_factory=VideoTransformer,
-                                  async_transform=True)
+            ctx = webrtc_streamer(key="snapshot", mode=WebRtcMode.SENDRECV, video_transformer_factory=VideoTransformer, async_transform=True)
 
             while ctx.video_transformer:
 
@@ -509,12 +505,11 @@ elif main_options == 'Detection space':
             rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]},
             media_stream_constraints={"video": True, "audio": True},
         )
-        # if __name__ == "__main__":
-        #   face_detect()
         face_detect()
         st.write('To load the live video it might take some time please wait for few minutes and the detection begins')
         st.write('This is the end of the instructions for using this option. See you')
-        st.write('Snap is taken and emotion is detected immediately whereas even without snap it is possible and there will be some lag. You can directly go to live video detection option')
+        st.write(
+            'Snap is taken and emotion is detected immediately whereas even without snap it is possible and there will be some lag. You can directly go to live video detection option')
         # st.write('Live snapshot detection')
     elif option == 'a Live Video detection':
         class VideoTransformer(VideoTransformerBase):
@@ -522,7 +517,8 @@ elif main_options == 'Detection space':
                 global b
                 label = []
                 img = frame.to_ndarray(format="bgr24")
-                face_cascade_detect = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+                face_cascade_detect = cv2.CascadeClassifier(
+                    cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
                 # emotion_labels = ['Angry', 'Disgust', 'Fear', 'Happy', 'Neutral', 'Sad', 'Surprise']
                 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
                 faces = face_cascade_detect.detectMultiScale(gray, 1.3, 1)
@@ -530,7 +526,8 @@ elif main_options == 'Detection space':
                 for (x, y, w, h) in faces:
                     a = cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
                     roi_gray = gray[y:y + h, x:x + w]
-                    roi_gray = cv2.resize(roi_gray, (48, 48), interpolation=cv2.INTER_AREA)  ##Face Cropping for prediction
+                    roi_gray = cv2.resize(roi_gray, (48, 48),
+                                          interpolation=cv2.INTER_AREA)  ##Face Cropping for prediction
                     t = pil2tensor(roi_gray, dtype=np.float32)  # converts to numpy tensor
                     t = t.float() / 255.0
                     roi = Image(t)
@@ -540,6 +537,7 @@ elif main_options == 'Detection space':
                     label_position = (x, y)
                     b = cv2.putText(a, label, label_position, cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
                 return b
+
 
         def live_detect():
             class VideoTransformer(VideoTransformerBase):
@@ -562,7 +560,7 @@ elif main_options == 'Detection space':
 
                     return in_image
 
-            ctx = webrtc_streamer(key="snap", video_transformer_factory=VideoTransformer, async_transform=True)
+            ctx = webrtc_streamer(key="snapshot", video_transformer_factory=VideoTransformer, async_transform=True)
             while ctx.video_transformer:
 
                 with ctx.video_transformer.frame_lock:
@@ -591,7 +589,8 @@ elif main_options == 'Detection space':
                             prediction = model6.predict(roi)[0]  # Prediction
                             label = str(prediction)
                             label_position = (x, y)
-                            b = cv2.putText(a, label, label_position, cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)  # Text Adding
+                            b = cv2.putText(a, label, label_position, cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0),
+                                            2)  # Text Adding
                             st.image(b, channels="BGR")
                 else:
                     st.write('Unable to access camera input')
@@ -605,13 +604,14 @@ elif main_options == 'Detection space':
             rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]},
             media_stream_constraints={"video": True, "audio": True})
 
-        #class VideoTransformer(object):
-         #   pass
+        # class VideoTransformer(object):
+        #   pass
         # live_detect()
 
-        webrtc_streamer(key="example", video_transformer_factory=VideoTransformer, mode=WebRtcMode.SENDRECV, async_transform=True)
+        webrtc_streamer(key="example", video_transformer_factory=VideoTransformer, mode=WebRtcMode.SENDRECV,
+                        async_transform=True)
 
-        #live_detect()
+        # live_detect()
         st.write('Live functioning')
         st.write(
             'This is running using newly introduced webrtc tool which can access the camera whereas opencv cannot function properly in streamlit')
