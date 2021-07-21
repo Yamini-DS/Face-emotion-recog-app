@@ -560,7 +560,7 @@ elif main_options == 'Detection space':
 
                     return in_image
 
-            ctx = webrtc_streamer(key="snapshot", video_transformer_factory=VideoTransformer, async_transform=True)
+            ctx = webrtc_streamer(key="snapshot", mode=WebRtcMode.SENDRECV, video_transformer_factory=VideoTransformer, async_transform=True)
             while ctx.video_transformer:
 
                 with ctx.video_transformer.frame_lock:
