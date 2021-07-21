@@ -469,7 +469,7 @@ elif main_options == 'Detection space':
 
                 with ctx.video_transformer.frame_lock:
                     in_image = ctx.video_transformer.in_image
-                    out_image = ctx.video_transformer.out_image
+                    #out_image = ctx.video_transformer.out_image
 
                 if in_image is not None:
                     gray = cv2.cvtColor(in_image, cv2.COLOR_BGR2GRAY)
