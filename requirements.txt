@@ -13,7 +13,7 @@ matplotlib   #==3.3.4
 pandas    #==1.2.5
 #tensorflow-cpu==2.5
 #tensorflow-gpu==2.5
-scipy==1.7.0
+#scipy==1.7.0
 flask==2.0.1
 streamlit==0.84.1
 urllib3==1.26.6
@@ -59,7 +59,7 @@ GitPython==3.1.18
 google-auth==1.32.1
 google-auth-oauthlib==0.4.4
 google-pasta==0.2.0
-h5py==3.1.0
+#h5py==3.1.0
 idna==2.10
 ipykernel==5.3.4
 ipython==7.22.0
