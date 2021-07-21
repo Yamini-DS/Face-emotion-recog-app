@@ -436,8 +436,10 @@ elif main_options == 'Detection space':
                 b = cv2.putText(a, label, label_position, cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
             return b
 
-        # class VideoTransformer(VideoTransformerBase):
-        #   pass
+
+        class VideoTransformer(VideoTransformerBase):
+            pass
+
 
         def face_detect():
             class VideoTransformer(VideoTransformerBase):
@@ -460,7 +462,8 @@ elif main_options == 'Detection space':
 
                     return in_image
 
-            ctx = webrtc_streamer(key="snapshot", mode=WebRtcMode.SENDRECV, video_transformer_factory=VideoTransformer, async_transform=True)
+            ctx = webrtc_streamer(key="snapshot", mode=WebRtcMode.SENDRECV, video_transformer_factory=VideoTransformer,
+                                  async_transform=True)
 
             while ctx.video_transformer:
 
@@ -496,6 +499,7 @@ elif main_options == 'Detection space':
                             st.image(b, channels="BGR")
                         else:
                             st.write('Unable to access camera input')
+
 
         HERE = Path(__file__).parent
 
@@ -560,12 +564,13 @@ elif main_options == 'Detection space':
 
                     return in_image
 
-            ctx = webrtc_streamer(key="snapshot", mode=WebRtcMode.SENDRECV, video_transformer_factory=VideoTransformer, async_transform=True)
+            ctx = webrtc_streamer(key="snapshot", mode=WebRtcMode.SENDRECV, video_transformer_factory=VideoTransformer,
+                                  async_transform=True)
             while ctx.video_transformer:
 
                 with ctx.video_transformer.frame_lock:
                     in_image = ctx.video_transformer.in_image
-                    #out_image = ctx.video_transformer.out_image
+                    # out_image = ctx.video_transformer.out_image
 
                 if in_image is not None:
                     gray = cv2.cvtColor(in_image, cv2.COLOR_BGR2GRAY)
