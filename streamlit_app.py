@@ -411,6 +411,7 @@ elif main_options == 'Detection space':
         st.write('Thank you')
 
     elif option == 'an Instant Snapshot live detection':
+        #class VideoTransformer(VideoTransformerBase):
         def transform(frame):
             label = []
             img = frame.to_ndarray(format="bgr24")
@@ -438,8 +439,8 @@ elif main_options == 'Detection space':
                 b = cv2.putText(a, label, label_position, cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
             return b
 
-        # class VideoTransformer(VideoTransformerBase):
-        #   pass
+        class VideoTransformer(VideoTransformerBase):
+            pass
 
         def face_detect():
             class VideoTransformer(VideoTransformerBase):
