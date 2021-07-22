@@ -27,7 +27,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# st.markdown("""<style>body{
+st.markdown("""<style>body{
 # backgroundColor="#9fb2d8";
 # secondaryBackgroundColor="#6072e0";
 # textColor="#e807bc";}</body></style>""", unsafe_allow_html=True)
@@ -323,8 +323,7 @@ elif main_options == 'Detection space':
 
                     return in_image
 
-            ctx = webrtc_streamer(key="snapshot", mode=WebRtcMode.SENDRECV, video_transformer_factory=VideoTransformer,
-                                  async_transform=True)
+            ctx = webrtc_streamer(key="snapshot", mode=WebRtcMode.SENDRECV, video_transformer_factory=VideoTransformer,client_settings=WEBRTC_CLIENT_SETTINGS, async_transform=True)
 
             while ctx.video_transformer:
 
@@ -422,8 +421,7 @@ elif main_options == 'Detection space':
 
                     return in_image
 
-            ctx = webrtc_streamer(key="snapshot", mode=WebRtcMode.SENDRECV, video_transformer_factory=VideoTransformer,
-                                  async_transform=True)
+            ctx = webrtc_streamer(key="snapshot", mode=WebRtcMode.SENDRECV, video_transformer_factory=VideoTransformer,client_settings=WEBRTC_CLIENT_SETTINGS, async_transform=True)
             while ctx.video_transformer:
 
                 with ctx.video_transformer.frame_lock:
@@ -468,8 +466,7 @@ elif main_options == 'Detection space':
         #   pass
         # live_detect()
 
-        webrtc_streamer(key="example", video_transformer_factory=VideoTransformer, mode=WebRtcMode.SENDRECV,
-                        async_transform=True)
+        webrtc_streamer(key="example", video_transformer_factory=VideoTransformer, mode=WebRtcMode.SENDRECV, client_settings=WEBRTC_CLIENT_SETTINGS, async_transform=True)
 
         # live_detect()
         st.write('Live functioning')
