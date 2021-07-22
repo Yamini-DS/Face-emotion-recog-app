@@ -43,12 +43,13 @@ pip freeze > requirements.txt
 5. To run streamlit app just run the below code
 streamlit run streamlit_app.py 
 ### Deployment made in GCP and Streamlit sharing
-- GCP link created from Kubernetes engine: http://35.202.208.253:8501/
-- GCP Google cloud secure link: https://yamini-face-emo-recog-gcp-csyemhz4pq-uc.a.run.app
+- GCP link created from Kubernetes engine: http://35.202.208.253:8501/ -> http://35.232.216.82:8501/
+- GCP Google cloud secure link: https://yamini-face-emo-recog-gcp-csyemhz4pq-uc.a.run.app  -> https://yamini-face-emotion-recognition-app-gcp-2h5kjyq6hq-uc.a.run.app/
 - Streamlit sharing link is not yet received will update it soon
 - Yayy! Here is the improvised version of the app and new streamlit sharing link: https://share.streamlit.io/yamini-ds/face-emotion-recog-app/main/streamlit_app.py
 - To see the work or application you can check with above links you can clear the cache and re-run the application if it does not work.
-- To video to come up it may take few minutes if it doesn't come within 5 minutes(max) and any error pops up there may be some internal mistake.
+- For the video to come up it might take few minutes(2-3 max) to load the live video and detect the emotions.
+- I might close GCP link soon as it is expensive and streamlit sharing works well and all the detection options work. 
 - If it doesn't show you can please refer to the below demo link of the application
 - Demo link:  https://youtu.be/JDKs6hsiCjo
 
