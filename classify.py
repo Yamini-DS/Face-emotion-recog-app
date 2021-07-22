@@ -1,5 +1,5 @@
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing.image import img_to_array, load_img
+#from tensorflow.keras.models import load_model
+#from tensorflow.keras.preprocessing.image import img_to_array, load_img
 import numpy as np
 import streamlit as st
 from fastai import *

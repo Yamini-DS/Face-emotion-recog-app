@@ -264,145 +264,6 @@ elif main_options == 'Detection space':
         test_video_pred('None')
 
     elif option == 'OpenCV Live':
-
-        # st.subheader('Play the Live video while detecting')
-        #
-        #
-        # @st.cache(allow_output_mutation=True)
-        # # @st.cache(suppress_st_warning=True)
-        # def get_cap_live():
-        #     print("Loading in function")
-        #     video_stream = cv2.VideoCapture(0)
-        #
-        #     # Check if camera opened successfully
-        #     if video_stream.isOpened() == False:
-        #         print("Error opening video file")
-        #     return video_stream
-        #
-        #
-        # face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-        #
-        # scaling_factorx = 0.25
-        # scaling_factory = 0.25
-        # image_placeholder = st.empty()
-        #
-        #
-        # # test to run until we stop or video ends
-        # def test_rerun(text, video_stream):
-        #     while True:
-        #         ret, image = video_stream.read()
-        #         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        #         font = cv2.FONT_HERSHEY_SIMPLEX
-        #         cv2.putText(image, "The last phase of the person's Emotion was recorded " + str(text), (95, 30), font,
-        #                     1.0,
-        #                     (255, 0, 0), 2, cv2.LINE_AA)
-        #
-        #         cv2.putText(image, "Press SPACE: Detecting", (5, 470), font, 0.7, (255, 0, 0), 2, cv2.LINE_AA)
-        #
-        #         cv2.putText(image, "Hold Q: To Quit😎", (460, 470), font, 0.7, (255, 0, 0), 2, cv2.LINE_AA)
-        #
-        #         faces = face_cascade.detectMultiScale(gray, 1.3, 5)
-        #         for x, y, w, h in faces:
-        #             cv2.rectangle(image, (x, y), (x + w, y + h), (255, 0, 0), 2)
-        #
-        #         cv2.imshow("Image", image)
-        #
-        #         if cv2.waitKey(1) == ord(' '):
-        #             cv2.imwrite("test8.jpg", image)
-        #             model5 = classify.get_model()
-        #             # st.write('Model Loaded')
-        #             gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        #             # read the processed image then make prediction and display the result
-        #             t = pil2tensor(image, dtype=np.float32)  # converts to numpy tensor
-        #             t = t.float() / 255.0
-        #             img1 = Image(t)
-        #             text = model5.predict(img1)[0]
-        #             text = str(text)
-        #             # text
-        #             print(text)
-        #             # st.write(text)
-        #             test_video_pred(text)
-        #             break
-        #
-        #         if cv2.waitKey(1) == ord('q'):
-        #             video_stream.release()
-        #             cv2.destroyAllWindows()
-        #             break
-        #     return text
-        #
-        #
-        # @st.cache(allow_output_mutation=True)
-        # # @st.cache(suppress_st_warning=True)
-        # def test_video_pred(text):
-        #     while True:
-        #         # here it is a CV2 object
-        #         video_stream = get_cap_live()
-        #         # video_stream = video_stream.read()
-        #         ret, image = video_stream.read()
-        #         if ret:
-        #             image = cv2.resize(image, None, fx=scaling_factorx, fy=scaling_factory,
-        #                                interpolation=cv2.INTER_AREA)
-        #             gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        #             font = cv2.FONT_HERSHEY_SIMPLEX
-        #             cv2.putText(image, "The last phase of person's emotion was recorded: " + str(text), (95, 30), font,
-        #                         1.0, (255, 0, 0), 2, cv2.LINE_AA)
-        #
-        #             cv2.putText(image, "Press SPACE: For detection", (5, 470), font, 0.7, (255, 0, 0), 2, cv2.LINE_AA)
-        #
-        #             cv2.putText(image, "Hold Q: To Quit😎", (460, 470), font, 0.7, (255, 0, 0), 2, cv2.LINE_AA)
-        #
-        #             faces = face_cascade.detectMultiScale(gray, 1.3, 5)
-        #             for x, y, w, h in faces:
-        #                 cv2.rectangle(image, (x, y), (x + w, y + h), (255, 0, 0), 2)
-        #
-        #             cv2.imshow("Image", image)
-        #
-        #             if cv2.waitKey(1) == ord(' '):
-        #                 cv2.imwrite("test8.jpg", image)
-        #                 model5 = classify.get_model()
-        #                 # st.write('Model Loaded from test_video_pred')
-        #                 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        #
-        #                 # read the processed image then make prediction and display the result
-        #
-        #                 t = pil2tensor(image, dtype=np.float32)  # converts to numpy tensor
-        #                 t = t.float() / 255.0
-        #                 img1 = Image(t)
-        #                 text = model5.predict(img1)[0]
-        #                 text = str(text)
-        #                 # st.write(text)
-        #                 # text
-        #                 print(text)
-        #                 # st.write(str(text))
-        #                 test_rerun(text, video_stream)
-        #                 # plt.imshow(img)
-        #                 break
-        #
-        #             if cv2.waitKey(1) == ord('q'):
-        #                 video_stream.release()
-        #                 cv2.destroyAllWindows()
-        #                 break
-        #         else:
-        #             print("there was a problem or video was finished")
-        #             cv2.destroyAllWindows()
-        #             video_stream.release()
-        #             break
-        #         # check if frame is None
-        #         if image is None:
-        #             print("there was a problem None")
-        #             # if True break the infinite loop
-        #             break
-        #
-        #         image_placeholder.image(image, channels="BGR", use_column_width=True)
-        #
-        #         cv2.destroyAllWindows()
-        #         video_stream.release()
-        #
-        #         cv2.destroyAllWindows()
-        #     return text
-        #
-
-        # test_video_pred('None')
         st.write('This is not a good option for streamlit then it works well locally')
         st.write('OpenCV is popular python library used when images and videos are involved')
         st.write('OpenCV is a good option for computer vision problems')
@@ -482,9 +343,6 @@ elif main_options == 'Detection space':
                         roi_gray = cv2.resize(roi_gray, (48, 48),
                                               interpolation=cv2.INTER_AREA)  ##Face Cropping for prediction
                         if np.sum([roi_gray]) != 0:
-                            # roi = roi_gray.astype('float') / 255.0
-                            # roi = img_to_array(roi)
-                            # roi = Image(roi)
                             t = pil2tensor(roi_gray, dtype=np.float32)  # converts to numpy tensor
                             t = t.float() / 255.0
                             roi = Image(t)
@@ -583,9 +441,6 @@ elif main_options == 'Detection space':
                         roi_gray = cv2.resize(roi_gray, (48, 48),
                                               interpolation=cv2.INTER_AREA)  ##Face Cropping for prediction
                         if np.sum([roi_gray]) != 0:
-                            # roi = roi_gray.astype('float') / 255.0
-                            # roi = img_to_array(roi)
-                            # roi = Image(roi)
                             t = pil2tensor(roi_gray, dtype=np.float32)  # converts to numpy tensor
                             t = t.float() / 255.0
                             roi = Image(t)
