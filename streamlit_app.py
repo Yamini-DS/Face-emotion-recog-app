@@ -378,17 +378,14 @@ elif main_options == 'Detection space':
                 global b
                 label = []
                 img = frame.to_ndarray(format="bgr24")
-                face_cascade_detect = cv2.CascadeClassifier(
-                    cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+                face_cascade_detect = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
                 # emotion_labels = ['Angry', 'Disgust', 'Fear', 'Happy', 'Neutral', 'Sad', 'Surprise']
                 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
                 faces = face_cascade_detect.detectMultiScale(gray, 1.3, 1)
-
                 for (x, y, w, h) in faces:
                     a = cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
                     roi_gray = gray[y:y + h, x:x + w]
-                    roi_gray = cv2.resize(roi_gray, (48, 48),
-                                          interpolation=cv2.INTER_AREA)  ##Face Cropping for prediction
+                    roi_gray = cv2.resize(roi_gray, (48, 48), interpolation=cv2.INTER_AREA)  ##Face Cropping for prediction
                     t = pil2tensor(roi_gray, dtype=np.float32)  # converts to numpy tensor
                     t = t.float() / 255.0
                     roi = Image(t)
@@ -421,13 +418,12 @@ elif main_options == 'Detection space':
 
                     return in_image
 
-            ctx = webrtc_streamer(key="snapshot", mode=WebRtcMode.SENDRECV, video_transformer_factory=VideoTransformer,client_settings=WEBRTC_CLIENT_SETTINGS, async_transform=True)
+            ctx = webrtc_streamer(key="snapshot", mode=WebRtcMode.SENDRECV, video_transformer_factory=VideoTransformer, client_settings=WEBRTC_CLIENT_SETTINGS, async_transform=True)
             while ctx.video_transformer:
 
                 with ctx.video_transformer.frame_lock:
                     in_image = ctx.video_transformer.in_image
                     # out_image = ctx.video_transformer.out_image
-
                 if in_image is not None:
                     gray = cv2.cvtColor(in_image, cv2.COLOR_BGR2GRAY)
                     face_cascade_detect = cv2.CascadeClassifier(
@@ -447,8 +443,7 @@ elif main_options == 'Detection space':
                             prediction = model6.predict(roi)[0]  # Prediction
                             label = str(prediction)
                             label_position = (x, y)
-                            b = cv2.putText(a, label, label_position, cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0),
-                                            2)  # Text Adding
+                            b = cv2.putText(a, label, label_position, cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)  # Text Adding
                             st.image(b, channels="BGR")
                 else:
                     st.write('Unable to access camera input')
@@ -464,7 +459,7 @@ elif main_options == 'Detection space':
 
         # class VideoTransformer(object):
         #   pass
-        # live_detect()
+        #live_detect()
 
         webrtc_streamer(key="example", video_transformer_factory=VideoTransformer, mode=WebRtcMode.SENDRECV, client_settings=WEBRTC_CLIENT_SETTINGS, async_transform=True)
 
